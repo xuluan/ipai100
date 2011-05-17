@@ -1,0 +1,15 @@
+<h1>Weibo Sync</h1>
+<p><%=link_to "Sync to Sina", sync_new_path(:type => "sina") %></p>
+
+<table>
+<% if current_user %>
+  <% current_user.sync_sites.each do |site| %>
+    <tr>
+     <td>  <%= site.site_name %></td>
+      <td><%= button_to  'Destroy', { :controller => "syncs",
+      :action => "destroy", :id => site.id }, :confirm => 'Are you sure?' %></td>
+    </tr>
+  <% end %>
+
+<% end %>
+</table>

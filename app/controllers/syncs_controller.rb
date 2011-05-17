@@ -1,5 +1,17 @@
 class SyncsController < ApplicationController
-#  before_filter :login_required
+
+  def index
+
+  end
+
+  def destroy
+    if params[:id]
+      site = SyncSite.find(params[:id])
+      site.destroy if site
+    end
+
+    redirect_to( sync_index_path)
+  end
 
   def new
     client = OauthChina::Sina.new
@@ -15,6 +27,12 @@ class SyncsController < ApplicationController
     results = client.dump
 
     if results[:access_token] && results[:access_token_secret]
+      site = SyncSite.new
+      site.site_name = "sina"
+      site.token = results[:access_token]
+      site.secret= results[:access_token_secret]
+      site.user_id = session[:user_id]
+      site.save!
       #在这里把access token and access token secret存到db
       #下次使用的时候:
       #client = OauthChina::Sina.load(:access_token => "xx", :access_token_secret => "xxx")

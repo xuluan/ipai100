@@ -11,7 +11,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 
 
 gem 'oauth'
-gem 'oauth_china'
+gem 'oauth_china', '0.1.1'
 # Use unicorn as the web server
 # gem 'unicorn'
 

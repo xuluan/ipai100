@@ -41,7 +41,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     oauth (0.4.4)
-    oauth_china (0.1.0)
+    oauth_china (0.1.1)
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -74,6 +74,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   oauth
-  oauth_china
+  oauth_china (= 0.1.1)
   rails (= 3.0.7)
   sqlite3
