@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :phone_no
 
   has_many :sync_sites, :dependent => :destroy
+  has_many :messages, :dependent => :destroy
 
   def self.authenticate(phone_no, password)
     user = find_by_phone_no(phone_no)
