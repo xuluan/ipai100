@@ -7,4 +7,4 @@ production:
   key:    "3617550638"
   secret: "98c01737b997b86aad69c913ca360c97"
   url:    "http://www.xuluan.info"
-  callback: "http://localhost:3000/syncs/sina/callback"
+  callback: "http://www.hapiboke.com/syncs/sina/callback"

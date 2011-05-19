@@ -48,7 +48,12 @@ class MessagesController < ApplicationController
         current_user.sync_sites.each do |site|
           if site.site_name == "sina"
             client = OauthChina::Sina.load(:access_token => site.token, :access_token_secret => site.secret)
-            client.add_status(@message.context)
+            if @message.pic.present?
+              client.upload_image(@message.context, @message.pic.path)
+            else
+              client.add_status(@message.context)
+            end
+
           end
 
         end

@@ -10,13 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110518130733) do
+ActiveRecord::Schema.define(:version => 20110519133702) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
     t.text     "context"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
   create_table "sync_sites", :force => true do |t|

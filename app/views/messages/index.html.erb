@@ -5,8 +5,8 @@
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Context</th>
+    <th>Photo</th>
+    <th>Message</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +14,10 @@
 
 <% @messages.each do |message| %>
   <tr>
-    <td><%= message.context %></td>
+    <td><%= image_tag message.pic.url(:medium) if message.pic.present? %></td>
+
+    <td><%= message.context if message.context %></td>
+
     <td><%= link_to 'Show', message %></td>
     <td><%= link_to 'Edit', edit_message_path(message) %></td>
     <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
