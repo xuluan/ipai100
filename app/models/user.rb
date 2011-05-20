@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :phone_no
   validates_uniqueness_of :phone_no
+  validates :phone_no, :length => 10..12
+  validates :password, :length => 6..20
+  validates :phone_no, :numericality  => true
+  validates :password, :numericality  => true
 
   has_many :sync_sites, :dependent => :destroy
   has_many :messages, :dependent => :destroy

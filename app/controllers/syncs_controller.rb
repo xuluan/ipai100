@@ -14,6 +14,15 @@ class SyncsController < ApplicationController
   end
 
   def new
+    user = current_user
+    if user
+      user.sync_sites.each do |site|
+        if site.site_name == "sina"
+          redirect_to(sync_index_path, :notice => 'Sina binding exist!')
+          return
+        end
+      end
+    end
     client = OauthChina::Sina.new
     authorize_url = client.authorize_url
     Rails.cache.write(build_oauth_token_key(client.name, client.oauth_token), client.dump)
@@ -24,7 +33,7 @@ class SyncsController < ApplicationController
     client = OauthChina::Sina.load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
     client.authorize(:oauth_verifier => params[:oauth_verifier])
 
-    results = client.dump
+    #results = client.dump
 
     if results[:access_token] && results[:access_token_secret]
       site = SyncSite.new

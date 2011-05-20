@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  # GET /messages
-  # GET /messages.xml
+  include ActionView::Helpers::TextHelper
+
   def index
     @messages = Message.all
 
@@ -46,12 +46,13 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         current_user.sync_sites.each do |site|
+          context = truncate("["+ message_url(@message) + "] "+ @message.context, :length => 140)
           if site.site_name == "sina"
             client = OauthChina::Sina.load(:access_token => site.token, :access_token_secret => site.secret)
             if @message.pic.present?
-              client.upload_image(@message.context, @message.pic.path)
+              client.upload_image(context, @message.pic.path)
             else
-              client.add_status(@message.context)
+              client.add_status(context)
             end
 
           end
