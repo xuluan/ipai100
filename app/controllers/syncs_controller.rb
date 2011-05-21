@@ -18,7 +18,7 @@ class SyncsController < ApplicationController
     if user
       user.sync_sites.each do |site|
         if site.site_name == "sina"
-          redirect_to(sync_index_path, :notice => 'Sina binding exist!')
+          redirect_to(sync_index_path, :notice => '同步设置已经存在!')
           return
         end
       end
