@@ -7,18 +7,13 @@
 <% @messages.each do |message| %>
 
   <tr  class="<%= cycle('list_line_odd', 'list_line_even') %>" >
-    <td  class="list_actions" >
-      <%= link_to '显示', message %> <br/>
-      <%= link_to '编辑', edit_message_path(message) %> <br/>
-      <%= link_to '删除', message, :confirm => 'Are you sure?', :method => :delete %> <br/>
-    </td>
+
     <td><%= image_tag(message.pic.url(:medium) , :class => 'list_image') if message.pic.present? %></td>
 
     <td class="list_description" >
     <p><%= message.context if message.context %></p>
 
     </td>
-
 
   </tr>
 <% end %>

@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ipai100</title>
-  <%= stylesheet_link_tag :all %>
+  <title>爱拍网</title>
+  <%= stylesheet_link_tag "scaffold" %>
+  <%= stylesheet_link_tag "depot", :media => "all" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div id="banner">
+  <%= image_tag("logo.png") %>
+  <%= @page_title || "爱拍网" %>
 
-<div id="user_nav">
-  <% if current_user %>
-    Logged in as <%= current_user.phone_no %>.
-    <%= link_to "Log out", log_out_path %>
-  <% else %>
-    <%= link_to "Sign up", sign_up_path %> or
-    <%= link_to "log in", log_in_path %>
-  <% end %>
 </div>
+<div id="columns">
+  <div id="side">
+    <% if current_user %>
+        <%= button_to "登出", log_out_path, :method => :get  %>  <br/>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
-<%= yield %>
+         <%= link_to '首页', root_path %>  <br/>
+        <%= link_to '同步设置', sync_index_path %>  <br/>
+        <%= link_to '管理文章', messages_path %>  <br/>
+
+        <br/>
+    <% else %>
+        <%= button_to "注册", sign_up_path, :method => :get %> <br/>
+        <%= button_to "登入", log_in_path, :method => :get %>  <br/>
+    <% end %>
+
+
+
+  </div>
+
+  <div id="main">
+    <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>

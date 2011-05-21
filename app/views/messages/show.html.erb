@@ -1,10 +1,10 @@
 <p>
-  <%= image_tag @message.pic.url(:original) if @message.pic.present? %>
+  <%= image_tag @message.pic.url(:original) if @message.pic.present? %> <br />
 
   <%= @message.context if @message.context %>
 
 </p>
 
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<%= link_to '编辑', edit_message_path(@message) %> |
+<%= link_to '返回', messages_path %>

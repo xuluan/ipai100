@@ -12,12 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :context %><br />
-    <%= f.text_area :context %>
-    <%= f.label :pic, "Photo" %>
+    <%= f.text_area :context, :rows => 10, :cols => 60 %>
+    <br/>
+    <br/>
+    <% if @message.pic.present?  %>
+        <%= image_tag(@message.pic.url(:medium))%> <br/>
+        <%= f.label :pic, "更换照片" %>
+
+    <% else %>
+        <%= f.label :pic, "添加照片" %>
+    <% end %>
+
     <%= f.file_field :pic %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "发布"%>
   </div>
 <% end %>

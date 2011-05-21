@@ -10,6 +10,15 @@ class MessagesController < ApplicationController
     end
   end
 
+  def list
+    @messages = Message.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @messages }
+    end
+  end
+
   # GET /messages/1
   # GET /messages/1.xml
   def show

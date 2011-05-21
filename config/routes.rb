@@ -1,5 +1,7 @@
 Ipai100::Application.routes.draw do
-  resources :messages
+  resources :messages do
+    get :list, :on => :collection
+  end
 
   get "home/index"
 
@@ -13,7 +15,7 @@ Ipai100::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
-  root :to => "messages#index"
+  root :to => "messages#list"
   resources :users
   resources :sessions
 end
