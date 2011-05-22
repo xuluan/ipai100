@@ -56,7 +56,8 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         current_user.sync_sites.each do |site|
-          context = truncate("["+ message_url(@message) + "] "+ @message.context, :length => 140)
+          context = truncate("[ "+ message_url(@message) + " ] "+ @message.context, :length => 140)
+          puts "url="+message_url(@message)
           if site.site_name == "sina"
             client = OauthChina::Sina.load(:access_token => site.token, :access_token_secret => site.secret)
             if @message.pic.present?
