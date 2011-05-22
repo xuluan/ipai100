@@ -50,7 +50,7 @@ class SyncsController < ApplicationController
     else
       flash[:notice] = "授权失败!"
     end
-    redirect_to root_path
+    redirect_to sync_index_path
   end
 
   private

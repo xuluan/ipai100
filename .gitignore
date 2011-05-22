@@ -1,4 +1,5 @@
 .bundle
+Gemfil.lock
 db/*.sqlite3
 log/*.log
 tmp/
