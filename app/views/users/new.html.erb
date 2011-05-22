@@ -1,4 +1,4 @@
-<h1>Sign Up</h1>
+<h1>注册</h1>
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
@@ -12,17 +12,17 @@
     </div>
   <% end %>
   <p>
-    <%= f.label :phone_no %><br />
+    <%= f.label :phone_no, "手机号码 (请输入11位手机号码)" %><br />
     <%= f.text_field :phone_no %>
   </p>
   <p>
-    <%= f.label :password %><br />
+    <%= f.label :password, "密码 （请输入6-20位数字作为密码）" %><br />
     <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "确认密码" %><br />
     <%= f.password_field :password_confirmation %>
   </p>
-  <p class="button"><%= f.submit %></p>
+  <p class="button"><%= f.submit  "注册" %></p>
 <% end %>
 

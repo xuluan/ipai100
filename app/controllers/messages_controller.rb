@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def index
-    @messages = Message.all
+    @messages = Message.find_all_by_user_id(session[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,7 +11,8 @@ class MessagesController < ApplicationController
   end
 
   def list
-    @messages = Message.all
+    @messages = Message.find_all_by_user_id(session[:user_id])
+    puts @messages
 
     respond_to do |format|
       format.html # index.html.erb
@@ -68,7 +69,7 @@ class MessagesController < ApplicationController
 
         end
 
-        format.html { redirect_to(@message, :notice => 'Message was successfully created!') }
+        format.html { redirect_to(@message, :notice => '文章已发布!') }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
       else
         format.html { render :action => "new" }
@@ -84,7 +85,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
-        format.html { redirect_to(@message, :notice => 'Message was successfully updated.') }
+        format.html { redirect_to(@message, :notice => '文章已更新.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

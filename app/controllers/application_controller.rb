@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless User.find_by_id(session[:user_id])
-      redirect_to log_in_path , :notice => "Please log in"
+      redirect_to log_in_path , :notice => "请登录！"
     end
   end
 
