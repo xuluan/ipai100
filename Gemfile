@@ -10,9 +10,9 @@ gem 'rails', '3.0.7'
 gem 'sqlite3'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
-
+gem 'json'
 gem 'oauth'
-gem 'oauth_china', '0.1.1'
+gem 'oauth_china', '0.3.0'
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -1,0 +1,10 @@
+development:
+  key:    "078bd83b6e895ba916a388b24b9c12fb"
+  secret: "5e4b6fade9ac8f24"
+  url:    "http://www.xuluan.info"
+  callback: "http://localhost:3000/syncs/douban/callback"
+production:
+  key:    "078bd83b6e895ba916a388b24b9c12fb"
+  secret: "5e4b6fade9ac8f24"
+  url:    "http://www.xuluan.info"
+  callback: "http://www.hapiboke.com/syncs/douban/callback"

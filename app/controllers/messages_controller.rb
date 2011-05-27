@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @messages }
+      format.xml { render :xml => @messages }
     end
   end
 
@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @messages }
+      format.xml { render :xml => @messages }
     end
   end
 
@@ -27,7 +27,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @message }
+      format.xml { render :xml => @message }
     end
   end
 
@@ -38,7 +38,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @message }
+      format.xml { render :xml => @message }
     end
   end
 
@@ -55,26 +55,24 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        current_user.sync_sites.each do |site|
-          context = truncate("[ "+ message_url(@message) + " ] "+ @message.context, :length => 140)
-          puts "url="+message_url(@message)
-          if site.site_name == "sina"
-            client = OauthChina::Sina.load(:access_token => site.token, :access_token_secret => site.secret)
-            if @message.pic.present?
-              client.upload_image(context, @message.pic.path)
-            else
-              client.add_status(context)
-            end
+        context = truncate("[ "+ message_url(@message) + " ] "+ @message.context, :length => 140)
+        puts "url="+message_url(@message)
 
+        current_user.sync_sites.each do |site|
+          client = OauthWrapper.get_oauth_obj(site.site_name).load(:access_token => site.token, :access_token_secret => site.secret)
+          if @message.pic.present?
+            client.upload_image(context, @message.pic.path)
+          else
+            client.add_status(context)
           end
 
         end
 
         format.html { redirect_to(@message, :notice => '文章已发布!') }
-        format.xml  { render :xml => @message, :status => :created, :location => @message }
+        format.xml { render :xml => @message, :status => :created, :location => @message }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @message.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -87,10 +85,10 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.update_attributes(params[:message])
         format.html { redirect_to(@message, :notice => '文章已更新.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @message.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -103,7 +101,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(messages_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 end

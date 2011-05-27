@@ -17,27 +17,27 @@ class SyncsController < ApplicationController
     user = current_user
     if user
       user.sync_sites.each do |site|
-        if site.site_name == "sina"
+        if site.site_name == params[:type]
           redirect_to(sync_index_path, :notice => '同步设置已经存在!')
           return
         end
       end
     end
-    client = OauthChina::Sina.new
+    client = OauthWrapper.get_oauth_obj(params[:type]).new
     authorize_url = client.authorize_url
     Rails.cache.write(build_oauth_token_key(client.name, client.oauth_token), client.dump)
     redirect_to authorize_url
   end
 
   def callback
-    client = OauthChina::Sina.load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
+    client =  OauthWrapper.get_oauth_obj(params[:type]).load(Rails.cache.read(build_oauth_token_key(params[:type], params[:oauth_token])))
     client.authorize(:oauth_verifier => params[:oauth_verifier])
 
     results = client.dump
 
     if results[:access_token] && results[:access_token_secret]
       site = SyncSite.new
-      site.site_name = "sina"
+      site.site_name = params[:type]
       site.token = results[:access_token]
       site.secret= results[:access_token_secret]
       site.user_id = session[:user_id]

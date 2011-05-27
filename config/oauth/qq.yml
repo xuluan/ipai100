@@ -1,0 +1,10 @@
+development:
+  key:    "d367b55b83c44c238616d6729eeacc92"
+  secret: "5f47307a4e61318d03e2519c9e25b2db"
+  url:    "http://www.xuluan.info"
+  callback: "http://localhost:3000/syncs/qq/callback"
+production:
+  key:    "d367b55b83c44c238616d6729eeacc92"
+  secret: "5f47307a4e61318d03e2519c9e25b2db"
+  url:    "http://www.xuluan.info"
+  callback: "http://www.hapiboke.com/syncs/qq/callback"

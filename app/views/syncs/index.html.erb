@@ -1,5 +1,9 @@
 <h1>同步设置</h1>
 <p><%=link_to "同步到新浪", sync_new_path(:type => "sina") %></p>
+<p><%=link_to "同步到豆瓣", sync_new_path(:type => "douban") %></p>
+<p><%=link_to "同步到QQ", sync_new_path(:type => "qq") %></p>
+<p><%=link_to "同步到搜狐", sync_new_path(:type => "sohu") %></p>
+<p><%=link_to "同步到网易", sync_new_path(:type => "netease") %></p>
 
 <table>
 <% if current_user %>

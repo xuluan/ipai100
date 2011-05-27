@@ -1,0 +1,10 @@
+development:
+  key:    "DfstwiCu1WTnvplu6iPx"
+  secret: "hgeLXULdfYFF#-Cp2bEQ*WvB7^GgCza7DkVt8TWY"
+  url:    "http://www.xuluan.info"
+  callback: "http://localhost:3000/syncs/sohu/callback"
+production:
+  key:    "DfstwiCu1WTnvplu6iPx"
+  secret: "hgeLXULdfYFF#-Cp2bEQ*WvB7^GgCza7DkVt8TWY"
+  url:    "http://www.xuluan.info"
+  callback: "http://www.hapiboke.com/syncs/sohu/callback"

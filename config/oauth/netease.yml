@@ -1,0 +1,10 @@
+development:
+  key:    "6bEilGe3AuMusUUD"
+  secret: "mjq0SGi6eiDGvoFzKExi0oiU7FSILUIt"
+  url:    "http://www.xuluan.info"
+  callback: "http://localhost:3000/syncs/netease/callback"
+production:
+  key:    "6bEilGe3AuMusUUD"
+  secret: "mjq0SGi6eiDGvoFzKExi0oiU7FSILUIt"
+  url:    "http://www.xuluan.info"
+  callback: "http://www.hapiboke.com/syncs/netease/callback"
