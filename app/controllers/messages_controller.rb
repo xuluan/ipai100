@@ -55,16 +55,11 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        context = truncate("[ "+ message_url(@message) + " ] "+ @message.context, :length => 140)
+        content = truncate("[ "+ message_url(@message) + " ] "+ @message.context, :length => 140)
+        puts "url="+message_url(@message)
 
         current_user.sync_sites.each do |site|
-          client = OauthWrapper.get_oauth_obj(site.site_name).load(:access_token => site.token, :access_token_secret => site.secret)
-          if @message.pic.present?
-            client.upload_image(context, @message.pic.path)
-          else
-            client.add_status(context)
-          end
-
+          Delayed::Job.enqueue(SyncJob.new(site, @message, content))
         end
 
         format.html { redirect_to(@message, :notice => '文章已发布!') }

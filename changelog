@@ -1,0 +1,29 @@
+TODO:
+1 delayed_job for sync messages
+2 subdomain for user public page
+
+
+
+History:
+- 2011-0528: add delayed_job
+  - list:
+    sudo bundle update
+    rails g delayed_job
+    rake db:migrate
+    rake jobs:work
+
+    create sync_job.rb
+    move code to sync_job
+
+    doc : http://rubydoc.info/gems/delayed_job/2.1.4/frames
+    $ RAILS_ENV=production script/delayed_job start
+    $ RAILS_ENV=production script/delayed_job stop
+
+
+
+
+
+
+
+
+
