@@ -52,6 +52,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(params[:message])
     @message.user_id = session[:user_id]
+    puts  params.inspect
 
     respond_to do |format|
       if @message.save
@@ -75,7 +76,6 @@ class MessagesController < ApplicationController
   # PUT /messages/1.xml
   def update
     @message = Message.find(params[:id])
-
     respond_to do |format|
       if @message.update_attributes(params[:message])
         format.html { redirect_to(@message, :notice => '文章已更新.') }

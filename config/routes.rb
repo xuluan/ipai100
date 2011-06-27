@@ -1,4 +1,8 @@
 Ipai100::Application.routes.draw do
+  get "shop_api/login"
+
+  get "shop_api/create"
+
   resources :messages do
     get :list, :on => :collection
   end
