@@ -52,7 +52,9 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(params[:message])
     @message.user_id = session[:user_id]
-    puts  params.inspect
+    puts params.inspect
+    puts "message==" + @message.inspect
+
 
     respond_to do |format|
       if @message.save

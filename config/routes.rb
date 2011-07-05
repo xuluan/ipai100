@@ -1,7 +1,7 @@
 Ipai100::Application.routes.draw do
   get "shop_api/login"
 
-  get "shop_api/create"
+  post "shop_api/publish"
 
   resources :messages do
     get :list, :on => :collection
