@@ -1,4 +1,8 @@
 Ipai100::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   get "shop_api/login"
 
   post "shop_api/publish"

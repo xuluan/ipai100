@@ -28,6 +28,7 @@ gem 'oauth_china', '0.3.0'
 gem 'delayed_job'
 
 gem 'rest-client'
+gem 'activeadmin'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
