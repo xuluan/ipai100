@@ -8,6 +8,6 @@ class Message < ActiveRecord::Base
     validate :both_blank
 
     def both_blank
-      errors.add(:base, "cannot be blank both of them") if context.blank? and not pic.present?
+      errors.add(:base, "cannot be blank both of them") if content.blank? and not pic.present?
     end
 end

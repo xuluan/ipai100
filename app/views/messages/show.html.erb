@@ -1,7 +1,7 @@
 <p>
   <%= image_tag @message.pic.url(:original) if @message.pic.present? %> <br />
 
-  <%= @message.context if @message.context %>
+  <%= @message.content if @message.content %>
 
 </p>
 

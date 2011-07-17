@@ -15,7 +15,7 @@
     <td><%= image_tag(message.pic.url(:medium) , :class => 'list_image') if message.pic.present? %></td>
 
     <td class="list_description" >
-    <p><%= message.context if message.context %></p>
+    <p><%= message.content if message.content %></p>
 
     </td>
 

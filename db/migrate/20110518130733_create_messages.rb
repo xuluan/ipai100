@@ -2,7 +2,7 @@ class CreateMessages < ActiveRecord::Migration
   def self.up
     create_table :messages do |t|
       t.integer :user_id
-      t.text :context
+      t.text :content
 
       t.timestamps
     end

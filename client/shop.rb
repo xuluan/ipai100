@@ -23,7 +23,7 @@ end
 def upload(id, password, content, pic, shop)
     url = HTTP_PREFIX+id+":"+password+"@"+SERVER_URL+UPLOAD_PATH
 
-	response = RestClient.post url, :message_pic => File.new(pic, 'rb'), :message_context => content, :shop_id =>shop
+	response = RestClient.post url, :message_pic => File.new(pic, 'rb'), :message_content => content, :shop_id =>shop
 		
 	puts response
 end

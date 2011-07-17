@@ -8,12 +8,12 @@ class ShopApiController < ApplicationController
   end
 
   def publish
-    msg = {"context" => params[:message_context], "pic" => params[:message_pic]}
+    msg = {"content" => params[:message_content], "pic" => params[:message_pic]}
     message = Message.new(msg)
     message.user_id = @user.id
 
     if message.save
-        content = truncate("[ "+ message_url(message) + " ] "+ message.context, :length => 140)
+        content = truncate("[ "+ message_url(message) + " ] "+ message.content, :length => 140)
         puts "url="+message_url(message)
 
         @user.sync_sites.each do |site|

@@ -2,8 +2,8 @@
 
 one:
   user_id: 1
-  context: MyText
+  content: MyText
 
 two:
   user_id: 1
-  context: MyText
+  content: MyText

@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20110716180453) do
 
   create_table "messages", :force => true do |t|
     t.integer  "user_id"
-    t.text     "context"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "pic_file_name"
