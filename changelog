@@ -1,10 +1,16 @@
 TODO:
-1 delayed_job for sync messages
+
 2 subdomain for user public page
 
 
 
 History:
+- 2011-0716: user settings
+
+
+- 2011-0710: add admin for project management
+ active admin   http://activeadmin.info/documentation.html
+
 - 2011-0528: add delayed_job
   - list:
     sudo bundle update

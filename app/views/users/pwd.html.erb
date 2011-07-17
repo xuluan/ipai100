@@ -1,0 +1,31 @@
+<h1>更改密码</h1>
+
+<%= form_tag update_pwd_path do %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+
+
+
+      </ul>
+    </div>
+
+
+  <% end %>
+       <%if @message %>
+        <p><%= @message %></p>
+        <% end %>
+  <p>
+    <%= label_tag :password, "密码" %><br />
+    <%= password_field_tag :password %>
+  </p>
+  <p>
+    <%= label_tag :password_confirmation, "确认密码" %><br />
+    <%= password_field_tag :password_confirmation %>
+  </p>
+  <p class="button"><%= submit_tag "更改密码" %></p>
+<% end %>
+

@@ -24,6 +24,14 @@ Ipai100::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
   root :to => "messages#list"
+
+  match "users/update_info" => "users#update_info", :as => :update_info
+
+  match "users/update_pwd" => "users#update_pwd", :as => :update_pwd
   resources :users
+
+
+
+
   resources :sessions
 end

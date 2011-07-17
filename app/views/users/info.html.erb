@@ -1,0 +1,38 @@
+<h1>个人信息</h1>
+
+<%= form_for(:user_info,:url => {:action => 'update_info'}, :html => { :multipart => true } ) do |f| %>
+  <% if @user_info.errors.any? %>
+    <div class="error_messages">
+      <ul>
+        <% for message in @user_info.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+       <%if @message %>
+        <p><%= @message %></p>
+        <% end %>
+
+  <p>
+    <%= f.label :nickname, "昵称" %><br />
+    <%= f.text_field :nickname %>
+  </p>
+  <p>
+    <%= f.label :description, "个人简介" %><br />
+    <%= f.text_area :description, :rows => 10, :cols => 60 %>
+  </p>
+
+    <br/>
+    <% if @user_info.photo.present?  %>
+        <%= image_tag(@user_info.photo.url(:original))%> <br/>
+    <% end %>
+        <%= f.label :photo, "更换头像" %>
+
+
+    <%= f.file_field :photo %>
+
+  <p class="button"><%= submit_tag "更改" %></p>
+<% end %>
+

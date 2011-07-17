@@ -16,6 +16,9 @@ class User < ActiveRecord::Base
   has_many :sync_sites, :dependent => :destroy
   has_many :messages, :dependent => :destroy
 
+  belongs_to :user_info
+  before_create :create_user_info
+
   def self.authenticate(phone_no, password)
     user = find_by_phone_no(phone_no)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
@@ -30,5 +33,13 @@ class User < ActiveRecord::Base
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  protected
+
+  def create_user_info
+    user_info = UserInfo.new
+    user_info.save
+    self.user_info_id = user_info.id
   end
 end
