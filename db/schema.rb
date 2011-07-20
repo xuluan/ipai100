@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110716180453) do
+ActiveRecord::Schema.define(:version => 20110719185047) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -79,6 +79,14 @@ ActiveRecord::Schema.define(:version => 20110716180453) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_follows", :force => true do |t|
+    t.integer "follower_id",  :null => false
+    t.integer "following_id", :null => false
+  end
+
+  add_index "user_follows", ["follower_id"], :name => "index_user_follows_on_follower_id"
+  add_index "user_follows", ["following_id"], :name => "index_user_follows_on_following_id"
 
   create_table "user_infos", :force => true do |t|
     t.string   "nickname"
