@@ -1,9 +1,14 @@
-<h1>注册</h1>
 
-<%= form_for @user do |f| %>
+
+<div id="signup-content"  class="signup-wrapper">
+	<h1 class="signup-logo"> <a href="/" title="爱拍网"></a> </h1>
+	<div class="signup-message_box">欢迎注册(或找回密码)，请输入11位手机号码，密码将被发送至您的手机！</div>
+	<div id="signup_form" class="signup-action clearfix">
+
+      <%= form_for @user do |f| %>
+
   <% if @user.errors.any? %>
     <div class="error_messages">
-      <h2>Form is invalid</h2>
       <ul>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
@@ -11,10 +16,16 @@
       </ul>
     </div>
   <% end %>
-  <p>
-    <%= f.label :phone_no, "手机号码 (请输入11位手机号码)" %><br />
-    <%= f.text_field :phone_no %>
-  </p>
+
+        <div class="signup-item-wrapper">
+        <%= f.text_field :phone_no, :class => 'signup-input', :id => 'phone_no' %>
+        <%= f.label :phone_no, "手机号码", :class => 'signup-label'%>
+        </div>
+
+        <%= f.submit  "",  :class => 'signup-submit'%>
+
+        <br/>
+
   <p>
     <%= f.label :password, "密码 （请输入6-20位数字作为密码）" %><br />
     <%= f.password_field :password %>
@@ -23,6 +34,7 @@
     <%= f.label :password_confirmation, "确认密码" %><br />
     <%= f.password_field :password_confirmation %>
   </p>
-  <p class="button"><%= f.submit  "注册" %></p>
-<% end %>
+       <% end %>
+   </div>
+</div>
 

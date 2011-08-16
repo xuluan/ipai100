@@ -5,7 +5,9 @@ require 'rubygems'
 require 'rest_client'
 
 HTTP_PREFIX = "http://"
-SERVER_URL = "127.0.0.1:3000/"
+#SERVER_URL = "127.0.0.1:3000/"
+SERVER_URL = "www.hapiboke.com/"
+
 LOGIN_PATH = "shop_api/login"
 UPLOAD_PATH = "shop_api/publish"
 
@@ -29,8 +31,8 @@ def upload(id, password, content, pic, shop)
 end
 
 def help
-	puts "ruby shop_action.rb login <phoneid> <password>"
-	puts "ruby shop_action.rb upload <phoneid> <password> <message> <upload_picture> <shop_phoneid>"
+	puts "ruby shop.rb login <phoneid> <password>"
+	puts "ruby shop.rb upload <phoneid> <password> <message> <upload_picture> <shop_phoneid>"
 	exit
 end	
 

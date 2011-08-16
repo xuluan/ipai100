@@ -1,13 +1,25 @@
-<h1>登录</h1>
 
-<%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :phone_no, "手机号码" %><br />
-    <%= text_field_tag :phone_no, params[:phone_no] %>
-  </p>
-  <p>
-    <%= label_tag :password, "密码" %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "登录" %></p>
-<% end %>
+<div id="login-content"  class="login-wrapper">
+  <h1 class="login-logo"> <a href="/" title="爱拍网"></a> </h1>
+  <div id="login_form" class="login-action clearfix">
+      <%= form_tag sessions_path do %>
+
+      <div class="login-message_box">
+
+        <%= text_field_tag :phone_no, params[:phone_no], :class => 'login-input' %>
+        <%= label_tag :phone_no, "手机号码", :class => 'login-label', :id => 'phone_no' %><br />
+
+      </div>
+      <div class="login-message_box">
+
+        <%= password_field_tag :password, params[:password],:class => 'login-input' %>
+        <%= label_tag :password, "密码", :class => 'login-label' %><br />
+
+      </div>
+
+        <%= submit_tag "登录", :class => 'login-submit' %>
+
+
+        <% end %>
+  </div>
+</div>

@@ -2,42 +2,40 @@
 <html>
 <head>
   <title>爱拍网</title>
-  <%= stylesheet_link_tag "scaffold" %>
-  <%= stylesheet_link_tag "depot", :media => "all" %>
+  <%= stylesheet_link_tag "style" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
-<body>
-<div id="banner">
-  <%= image_tag("logo.png") %>
-  <%= @page_title || "爱拍网" %>
+<body class="page-home">
 
-</div>
-<div id="columns">
-  <div id="side">
-    <% if current_user %>
-        <%= button_to "登出", log_out_path, :method => :get  %>  <br/>
+	<div id="header_wrap">
+		<div id="main-header">
+			<div id="main-logo"><a href="#"></a></div>
 
-         <%= link_to '首页', root_path %>  <br/>
-        <%= link_to '同步设置', sync_index_path %>  <br/>
-        <%= link_to '管理文章', messages_path %>  <br/>
+			<div id="nav">
+				<ul>
+					<li ><a title="主页" href="#">主页</a></li>
+					<li><a title="用户设置" href="#">用户设置</a></li>
+					<li><a title="帐号绑定" href="#">帐号绑定</a></li>
+					<li><a title="退出" href="#">退出</a></li>
+				</ul>
+			</div>
 
-        <br/>
-    <% else %>
-        <%= button_to "注册", sign_up_path, :method => :get %> <br/>
-        <%= button_to "登入", log_in_path, :method => :get %>  <br/>
-    <% end %>
+		</div>
+	</div>
 
 
 
-  </div>
-
-  <div id="main">
-    <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
     <%= yield %>
-  </div>
+
+<div id="footer">
+        <a  href="#">美控电子科技有限公司版权所有</a>
+   		<a class="footer-item" href="#">沪ICP备10023号</a>
+        <a class="footer-item" href="#">关于我们</a>
+        <a class="footer-item" href="#"> 联系我们</a>
+        <a class="footer-item" href="#">招贤纳士</a>
+        <a class="footer-item" href="#">服务条款</a>
+        <a class="footer-item" href="#">隐私政策</a>
 </div>
 
 </body>
