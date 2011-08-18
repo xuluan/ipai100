@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
 
   def index
     @messages = Message.find_all_by_user_id(session[:user_id])
+    @message =   Message.new
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,28 +1,123 @@
+<div class="main-message_box"> 欢迎回来, xxx! </div>
 
-<%= button_to '新文章', new_message_path, :method => :get %>
+  <div id="main-content">
+	<div id="main">
 
-<h1>文章列表</h1>
-<div id="product_list">
-<table>
+        <%= render 'form' %>
+
+      <ul class ="articles-list">
+
 <% @messages.each do |message| %>
 
-  <tr  class="<%= cycle('list_line_odd', 'list_line_even') %>" >
-    <td  class="list_actions" >
-      <%= link_to '显示', message %> <br/>
-      <%= link_to '编辑', edit_message_path(message) %> <br/>
-      <%= link_to '删除', message, :confirm => 'Are you sure?', :method => :delete %> <br/>
+<li class="article-field">
+
+<div class="avator"><a href="#1" title="name" class="user-icon" ></a></div>
+<div class="post">
+    <div class="triangle"></div>
+
+  <h2 class="title"> <a href="#1">title</a> </h2>
+
+  <p class="meta">作者 / <a href="#1">天下无敌</a> 发表于/ 07/18/2011</p>
+
+  <div class="entry">
+
+    <ol>
+       <%  if message.pic.present? %>
+        <li  class="photo">
+          <%= image_tag(message.pic.url(:medium) , :class => 'list_image') %>
+        </li>
+       <% end	  %>
+
+        <li>
+            <p><%= message.content if message.content %></p>
+        </li>
+    </ol>
+  </div>
+
+
     </td>
-    <td><%= image_tag(message.pic.url(:medium) , :class => 'list_image') if message.pic.present? %></td>
-
-    <td class="list_description" >
-    <p><%= message.content if message.content %></p>
-
-    </td>
+    <td></td>
 
 
-  </tr>
-<% end %>
-</table>
+
+    <div class="act">
+      <a title="喜欢" class="i-love"></a>
+
+      <%= link_to '显示', message , :class => 'rt'%>
+      <%= link_to '编辑', edit_message_path(message), :class => 'rt' %>
+      <%= link_to '删除', message, :confirm => 'Are you sure?', :method => :delete, :class => 'rt' %>
+        <a class="rt" target="_blank" href="#1">转载</a>
+        <a class="rt">热度</a>
+        <a class="rt">回应</a>
+
+    </div>
 </div>
-<br />
+
+
+</li>
+<% end %>
+
+
+      </ul>
+
+		<div class="paging"><a href="#1">上一页</a>
+		<a href="#1">下一页</a>
+		</div>
+    </div>
+
+<div id="sidebar">
+		<div id="user_icon">
+			<div class="avator"><a href="#1" title="name" class="user-icon"> </a></div>
+			<div class="user">
+				<p ><a id="name" href="#1">Sky</a><br />	</p>
+				<p id="adress">中国 广州</p>
+			</div>
+		</div>
+
+		<div id="user_description">
+			<h2>个人介绍:</h2>
+			生活从来不喜欢抱怨的人，成长需要付出代价，一个人真正有能力的人是做好每一份工作，什么工作都能适应和做好！
+		</div>
+		<div id="user_link">
+			<a class="link" href="#1">我的首页</a>
+			<a class="link" href="#1">我喜欢的</a>
+			<a class="link" href="#1">我关注的博客</a>
+		</div>
+
+
+		<div id="user_follower"> 我的粉丝
+			<ul class="follower">
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+			</ul>
+
+			<p class="more"><a href="#1">more >></a></p>
+
+		</div>
+
+ 	  <div id="user_following"> 我关注的人
+			<ul class="following">
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+				<li><a href="#1" title="name"> <img src="images/user.png" /></a></li>
+			</ul>
+
+			<p class="more"><a href="#1" >more >></a></p>
+		</div>
+
+	</div>
+  </div>
 
