@@ -272,7 +272,7 @@ input, a {
 	cursor: pointer;
 	text-indent: -9999;
 	background-attachment: scroll;
-	background-image: url(/images/reg%20button.png);
+	background-image: url(/images/reg_button.png);
 	background-repeat: no-repeat;
 	background-position: 0 -40px;
 }
